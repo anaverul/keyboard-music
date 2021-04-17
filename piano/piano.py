@@ -59,15 +59,15 @@ def play(file_name):
     wave_obj.play()
     print("Playback Stopped")
 
-def play_back(event):
-    if event.char == '1':
-        start_new_thread(play, ('songs/1.txt',))
-    elif event.char == '2':
-        start_new_thread(play, ('songs/2.txt',))
-    else:
-        label_pressed(event)
+# def play_back(event):
+#     if event.char == '1':
+#         start_new_thread(play, ('songs/1.txt',))
+#     elif event.char == '2':
+#         start_new_thread(play, ('songs/2.txt',))
+#     else:
+#         label_pressed(event)
 
-        start_new_thread(play, ('songs/song.txt',))
+#         start_new_thread(play, ('songs/song.txt',))
 
 def record_on_off(event):
     global recording
@@ -214,7 +214,7 @@ class Piano(Frame):
         play_button.image = img
         play_button.place(x=700, y=50)
         play_button.name = 'green_button'
-        play_button.bind('<Button-1>', play_back)
+        # play_button.bind('<Button-1>', play_back)
         play_button.bind('<ButtonRelease-1>', label_released)
 
         self.parent.title('The Piano')
@@ -231,8 +231,8 @@ class Piano(Frame):
         self.parent.bind('<KeyPress>', key_pressed)
         self.parent.bind('<KeyRelease>', key_released)
 
-        self.parent.bind('1', play_back)
-        self.parent.bind('2', play_back)
+        # self.parent.bind('1', play_back)
+        # self.parent.bind('2', play_back)
 
         self.pack(fill=BOTH, expand=1)
 
