@@ -2,9 +2,7 @@ try:
     from Tkinter import Tk, Frame, BOTH, Label, PhotoImage
 except ImportError:
     from tkinter import Tk, Frame, BOTH, Label, PhotoImage
-
-import simpleaudio as sa
-
+from pygame import mixer
 import time as t
 
 start = t.time()
@@ -41,7 +39,8 @@ def find_label(name, array):
 def key_pressed(event):
     note = KEYS_TO_NOTES.get(event.char, None)
     if note:
-        wave_obj = sa.WaveObject.from_wave_file('sounds/' + note + '.wav')
+        mixer.init()
+        wave_obj = mixer.Sound('sounds/' + note + '.wav')
         wave_obj.play()
         print(note)
         if len(note) == 2:
@@ -64,7 +63,8 @@ def key_released(event):
         find_label(note, event.widget.keys).image = key_img
         
 def button_pressed(event):
-    wave_obj = sa.WaveObject.from_wave_file('sounds/' + event.widget.name + '.wav')
+    mixer.init()
+    wave_obj=mixer.Sound('sounds/' + event.widget.name + '.wav')
     wave_obj.play()
     print(event.widget.name)
 
@@ -206,7 +206,7 @@ class Piano(Frame):
         mapping_image = PhotoImage(file=path_to_mapping)
         label = Label(self, image = mapping_image, bd=0)
         label.image = mapping_image
-        label.place(x=0, y=0) #(x = 1050, y=0)
+        label.place(x=0, y=0) 
         return label
     
 
