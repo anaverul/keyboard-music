@@ -176,8 +176,8 @@ class Piano(Frame):
 
         self.parent.title('The Piano')
 
-        w = 1050
-        h = 200
+        w = 1050 #1050
+        h = 624 #200
         sw = self.parent.winfo_screenwidth()
         sh = self.parent.winfo_screenheight()
         x = (sw - w) / 2
@@ -195,17 +195,19 @@ class Piano(Frame):
         key_image = PhotoImage(file=img)
         label = Label(self, image=key_image, bd=0)
         label.image = key_image
-        label.place(x=key[0], y=0)
+        label.place(x=key[0], y=424)
         label.name = key[1]
         label.bind('<Button-1>', button_pressed)
         label.bind('<ButtonRelease-1>', label_released)
         return label
    
     def create_mapping(self):
-        path_to_mapping ='pictures/mapping.png'
+        path_to_mapping ='pictures/mapping.gif'
         mapping_image = PhotoImage(file=path_to_mapping)
-        label = Label(self, image = mapping_image)
-        label.place (x = 1050, y=0)
+        label = Label(self, image = mapping_image, bd=0)
+        label.image = mapping_image
+        label.place(x=0, y=0) #(x = 1050, y=0)
+        return label
     
 
 def main():
