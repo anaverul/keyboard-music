@@ -153,7 +153,12 @@ KEYS_TO_NOTES = {
     '9': 'Eb4',
     '-': 'Gb4',
     '=': 'Ab4',
-    Keys.BACKSPACE : 'Ab4'
+    Keys.BACKSPACE : 'Ab4', 
+    Keys.BACK_SPACE : 'Ab4',
+    Keys.DELETE : 'Ab4',
+    'Keys.BACKSPACE' : 'Ab4',
+    'Keys.BACK_SPACE' : 'Ab4',
+    'Keys.DELETE' : 'Ab4',
 }
 
 # Keys.BACKSPACE : 'Ab4'
