@@ -3,9 +3,6 @@ try:
 except ImportError:
     from tkinter import Tk, Frame, BOTH, Label, PhotoImage
 from pygame import mixer
-import time as t
-
-start = t.time()
 
 file = open('songs/song.txt', 'w')
 file.close()
