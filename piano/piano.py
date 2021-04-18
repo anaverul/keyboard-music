@@ -9,6 +9,9 @@ import time as t
 
 from _thread import start_new_thread
 
+# importing this to reference BACKSPACE key
+from selenium.webdriver.common.keys import Keys
+
 start = t.time()
 
 file = open('songs/song.txt', 'w')
@@ -141,17 +144,23 @@ KEYS_TO_NOTES = {
     '[': 'G4',
     ']': 'A4',
     '\\': 'B4',
-    '1': 'Cb3',
-    '2': 'Db3',
-    '4': 'Fb3',
-    '5': 'Gb3',
-    '6': 'Ab3',
-    '8': 'Cb4',
-    '9': 'Db4',
-    '-': 'Fb4',
-    '=': 'Gb4',
-    'del': 'Ab4',
+    '1': 'Db3',
+    '2': 'Eb3',
+    '4': 'Gb3',
+    '5': 'Ab3',
+    '6': 'Bb3',
+    '8': 'Db4',
+    '9': 'Eb4',
+    '-': 'Gb4',
+    '=': 'Ab4',
+    Keys.BACKSPACE : 'Ab4'
 }
+
+# Keys.BACKSPACE : 'Ab4'
+#2 Eb3
+#6 Bb3
+#9 Eb4
+
 class Piano(Frame):
 
     def __init__(self, parent):
