@@ -3,14 +3,9 @@ try:
 except ImportError:
     from tkinter import Tk, Frame, BOTH, Label, PhotoImage
 from pygame import mixer
-import time as t
-
-start = t.time()
-
-file = open('songs/song.txt', 'w')
-file.close()
 
 def label_pressed(event):
+    #changes the graphical interface whenever a label is pressed
     if len(event.widget.name) == 2:
         img = 'pictures/white_key_pressed.gif'
     elif len(event.widget.name) == 3:
@@ -20,6 +15,7 @@ def label_pressed(event):
     event.widget.image = key_img
 
 def label_released(event):
+    #changes the graphical interface whenever a label is released
     if len(event.widget.name) == 2:
         img = 'pictures/white_key.gif'
     elif len(event.widget.name) == 3:
@@ -27,7 +23,7 @@ def label_released(event):
     key_img = PhotoImage(file=img)
     event.widget.configure(image=key_img)
     event.widget.image = key_img
-    
+
 
 def find_label(name, array):
     for x in range(len(array)):
@@ -37,6 +33,7 @@ def find_label(name, array):
             return array[x][2]
 
 def key_pressed(event):
+    #changes the graphical interface whenever a key is pressed
     note = KEYS_TO_NOTES.get(event.char, None)
     if note:
         mixer.init()
@@ -52,6 +49,7 @@ def key_pressed(event):
         find_label(note, event.widget.keys).image = key_img
 
 def key_released(event):
+    #changes the graphical interface whenever a key is released
     note = KEYS_TO_NOTES.get(event.char, None)
     if note:
         if len(note) == 2:
@@ -61,8 +59,9 @@ def key_released(event):
         key_img = PhotoImage(file=img)
         find_label(note, event.widget.keys).configure(image=key_img)
         find_label(note, event.widget.keys).image = key_img
-        
+
 def button_pressed(event):
+    #plays sound during an event (i.e. key/label is pressed)
     mixer.init()
     wave_obj=mixer.Sound('sounds/' + event.widget.name + '.wav')
     wave_obj.play()
@@ -124,7 +123,7 @@ class Piano(Frame):
     def init_user_interface(self):
         self.create_mapping()
 
-        keys = [
+        keys = [   #provides locations of keys on the GUI
     [0, 'C2'],
     [35, 'Db2'],
     [50, 'D2'],
@@ -161,7 +160,7 @@ class Piano(Frame):
     [950, 'A4'],
     [985, 'Bb4'],
     [1000, 'B4']
-    
+
 ]
 
         for key in keys:
@@ -176,10 +175,11 @@ class Piano(Frame):
 
         self.parent.title('The Piano')
 
-        w = 1050 #1050
-        h = 624 #200
+        w = 1050
+        h = 624
         sw = self.parent.winfo_screenwidth()
         sh = self.parent.winfo_screenheight()
+        #Centers the GUI in the middle of the screen
         x = (sw - w) / 2
         y = (sh - h) / 2
         self.parent.geometry('%dx%d+%d+%d' % (w, h, x, y))
@@ -200,15 +200,16 @@ class Piano(Frame):
         label.bind('<Button-1>', button_pressed)
         label.bind('<ButtonRelease-1>', label_released)
         return label
-   
+
     def create_mapping(self):
+        #adds the key mapping image on the GUI
         path_to_mapping ='pictures/mapping.gif'
         mapping_image = PhotoImage(file=path_to_mapping)
         label = Label(self, image = mapping_image, bd=0)
         label.image = mapping_image
-        label.place(x=0, y=0) 
+        label.place(x=0, y=0)
         return label
-    
+
 
 def main():
     root = Tk()
