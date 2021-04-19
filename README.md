@@ -9,5 +9,5 @@ This software provides an interactive graphical interface of a piano. It contain
 
 ## How to use
 **This program is not supported on WSL.**
-To run on windows machines, type ```$ python3 piano.py``` in cmd and enter
-To run on Macbooks, ...
+* To run on windows machines, type ```$ python3 piano.py``` in cmd and enter
+* To run on Macbooks, ...
